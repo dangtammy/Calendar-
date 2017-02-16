@@ -20,7 +20,9 @@
 * The player will input a date and the program will split the numbers
   * Input: 07/19/2006
   * Output: 0, 7, 1, 9, 2, 0, 0, 6
-
+* The program will determine if the input year is a leap year or not
+  * Input: 07/19/2006
+  * Output: false
 ## Known Bugs
 
 No known bugs
