@@ -30,13 +30,13 @@ namespace CalendarCounter
     [Fact]
     public void MonthScore_ForDateNumberInput_GetMonthScore()
     {
-      string inputDate = "19/07/2006";
+      string inputDate = "03/10/1919";
       Date testDate = new Date(inputDate);
       List<string> splitDate = testDate.SplitDate();
-      int outputScore = testDate.MonthScore(splitDate);
+      string outputDate = testDate.MonthScore(splitDate);
 
-      int verifyScore = 6;
-      Assert.Equal(verifyScore, outputScore);
+      string verifyDate = "Monday";
+      Assert.Equal(outputDate, verifyDate);
     }
 
   }

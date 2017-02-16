@@ -39,38 +39,43 @@ namespace CalendarCounter
       return yearInt;
     }
 
-    public int MonthScore(List<string> result)
+    public string MonthScore(List<string> result)
     {
       int score = 0;
       int monthInt = 0;
+      double lastTwoInt = 0;
+      double newScore = 0;
+      string dayOfWeek = "";
       //Find year
       string[] yearNumber = new string[]{result[4],result[5],result[6],result[7]};
       string yearString = String.Join("",yearNumber);
       int yearInt = int.Parse(yearString);
 
+
       //Find month
-      if(result[2] == "0")
+      if(result[0] == "0")
       {
-      monthInt += int.Parse(result[3]);
+      monthInt += int.Parse(result[1]);
       }
       else
       {
-      string[] monthNumber = new string[]{result[2],result[3]};
+      string[] monthNumber = new string[]{result[0],result[1]};
       string monthString = String.Join("",monthNumber);
       monthInt += int.Parse(monthString);
       }
 
       //Find day
-      // if(result[0] == "0")
-      // {
-      // int dayInt = int.Parse(result[1])
-      // }
-      // else
-      // {
-      // string[] dayNumber = new string[]{result[0],result[1]};
-      // string dayString = String.Join("",dayNumber);
-      // int dayInt = int.Parse(dayString);
-      // }
+      if(result[2] == "0")
+      {
+        score += int.Parse(result[3]);
+      }
+      else
+      {
+      string[] dayNumber = new string[]{result[2],result[3]};
+      string dayString = String.Join("",dayNumber);
+        score += int.Parse(dayString);
+      }
+
       // monthScore
       if(monthInt == 10)
       {
@@ -117,12 +122,57 @@ namespace CalendarCounter
         score += 3;
       }
 
-      return score;
 
+      newScore = Convert.ToDouble(score);
+      Console.WriteLine(newScore);
 
+      //Find last two digits
+      if(result[6] == "0")
+      {
+        lastTwoInt += Double.Parse(result[7]);
+      }
+      else
+      {
+        string[] lastTwoDigits = new string[]{result[6], result[7]};
+        string lastTwoDigitsString = String.Join("", lastTwoDigits);
+        lastTwoInt = Double.Parse(lastTwoDigitsString);
+      }
 
+      double totalLast = lastTwoInt + Math.Ceiling(lastTwoInt/4);
+      newScore += totalLast;
 
+      double calculation = Math.Ceiling(newScore % 7);
 
+      if (calculation == 0)
+      {
+        dayOfWeek += "Saturday";
+      }
+      else if (calculation == 1)
+      {
+        dayOfWeek += "Sunday";
+      }
+      else if (calculation == 2)
+      {
+        dayOfWeek += "Monday";
+      }
+      else if (calculation == 3)
+      {
+        dayOfWeek += "Tuesday";
+      }
+      else if (calculation == 4)
+      {
+        dayOfWeek += "Wednesday";
+      }
+      else if (calculation == 5)
+      {
+        dayOfWeek += "Thursday";
+      }
+      if (calculation == 6)
+      {
+        dayOfWeek += "Friday";
+      }
+
+      return dayOfWeek;
 
 
 
@@ -138,5 +188,6 @@ namespace CalendarCounter
 
       // }
     }
+
   }
 }
