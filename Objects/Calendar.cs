@@ -8,13 +8,12 @@ namespace CalendarCounter
   {
     private string _inputDates;
     public int score = 0;
+    public string[] resultDays = new string[]{"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
 
     public Date(string inputDates)
     {
       _inputDates = inputDates;
     }
-
-
 
     public List<string> SplitDate()
     {
@@ -29,14 +28,6 @@ namespace CalendarCounter
 
       var result = _inputList.Select(c => c.ToString()).ToList();
       return result;
-    }
-
-    public int FindYear(List<string> inputList)
-    {
-      string[] yearNumber = new string[]{inputList[4],inputList[5],inputList[6],inputList[7]};
-      string yearString = String.Join("",yearNumber);
-      int yearInt = int.Parse(yearString);
-      return yearInt;
     }
 
     public string MonthScore(List<string> result)
@@ -121,10 +112,8 @@ namespace CalendarCounter
       {
         score += 3;
       }
-
-
       newScore = Convert.ToDouble(score);
-      Console.WriteLine(newScore);
+
 
       //Find last two digits
       if(result[6] == "0")
@@ -140,54 +129,12 @@ namespace CalendarCounter
 
       double totalLast = lastTwoInt + Math.Ceiling(lastTwoInt/4);
       newScore += totalLast;
-
       double calculation = Math.Ceiling(newScore % 7);
 
-      if (calculation == 0)
-      {
-        dayOfWeek += "Saturday";
-      }
-      else if (calculation == 1)
-      {
-        dayOfWeek += "Sunday";
-      }
-      else if (calculation == 2)
-      {
-        dayOfWeek += "Monday";
-      }
-      else if (calculation == 3)
-      {
-        dayOfWeek += "Tuesday";
-      }
-      else if (calculation == 4)
-      {
-        dayOfWeek += "Wednesday";
-      }
-      else if (calculation == 5)
-      {
-        dayOfWeek += "Thursday";
-      }
-      if (calculation == 6)
-      {
-        dayOfWeek += "Friday";
-      }
+      int index = Convert.ToInt32(calculation);
+      string dayOfTheWeek = resultDays[index];
+      return dayOfTheWeek;
 
-      return dayOfWeek;
-
-
-
-      //
-      //
-      //
-      // if (yearInt % 400 == 0 || yearInt % 4 == 0)
-      // {
-      //
-      // }
-      // else
-      // {
-
-      // }
     }
-
   }
 }

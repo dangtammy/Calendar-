@@ -17,17 +17,6 @@ namespace CalendarCounter
       Assert.Equal(dateVerify, splitDate);
     }
     [Fact]
-    public void FindYear_ForDateNumberInput_YearString()
-    {
-      string inputDate = "07/19/2006";
-      Date testDate = new Date(inputDate);
-      List<string> splitDate = testDate.SplitDate();
-      int inputYear = testDate.FindYear(splitDate);
-
-      int verifyYear = 2006;
-      Assert.Equal(inputYear,verifyYear);
-    }
-    [Fact]
     public void MonthScore_ForDateNumberInput_GetMonthScore()
     {
       string inputDate = "03/10/1919";
