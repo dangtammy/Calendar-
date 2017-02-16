@@ -22,7 +22,7 @@ namespace CalendarCounter
       string inputDate = "03/10/1919";
       Date testDate = new Date(inputDate);
       List<string> splitDate = testDate.SplitDate();
-      string outputDate = testDate.MonthScore(splitDate);
+      string outputDate = testDate.Calculate(splitDate);
 
       string verifyDate = "Monday";
       Assert.Equal(outputDate, verifyDate);

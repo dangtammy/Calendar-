@@ -30,13 +30,13 @@ namespace CalendarCounter
       return result;
     }
 
-    public string MonthScore(List<string> result)
+    public string Calculate(List<string> result)
     {
       int score = 0;
       int monthInt = 0;
       double lastTwoInt = 0;
       double newScore = 0;
-      string dayOfWeek = "";
+  
       //Find year
       string[] yearNumber = new string[]{result[4],result[5],result[6],result[7]};
       string yearString = String.Join("",yearNumber);

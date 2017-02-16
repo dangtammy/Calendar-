@@ -1,0 +1,13 @@
+@{
+  Layout = "Shared/_Layout.cshtml";
+}
+<form action="/result" method="post">
+  <label for="date">Input Your Date MM/DD/YYYY</label>
+  <input type="text" name="date" id="date">
+  <button type="submit" class="btn btn-primary">Enter</button>
+</form>
+
+@if(@Model != null)
+{
+  <h2>@Model</h2>
+}
