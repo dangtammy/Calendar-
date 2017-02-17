@@ -15,7 +15,10 @@ namespace CalendarCounter
         Date testDate = new Date(inputDate);
         List<string> splitDate = testDate.SplitDate();
         string outputDate = testDate.Calculate(splitDate);
-        return View["index.cshtml", outputDate];
+        Dictionary<string,string> model = new Dictionary<string,string>{};
+        model.Add("userInput",inputDate);
+        model.Add("result",outputDate);
+        return View["index.cshtml",model];
       };
 
     }
